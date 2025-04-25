@@ -13,27 +13,19 @@ const app = express()
 connectDB()
 const port = process.env.PORT || 3000
 
-const allowedOrigins = [
-  "https://city-soundscape-frontend.vercel.app",
-  "https://city-soundscape-frontend-git-main-neethuss-projects.vercel.app",
-  "https://city-soundscape-frontend-ftocrmabj-neethuss-projects.vercel.app",
-  "http://localhost:5173"
-];
-
 //middleware to handle cors
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  origin: [
+    "https://city-soundscape-frontend.vercel.app",
+    "https://city-soundscape-frontend-git-main-neethuss-projects.vercel.app",
+    "https://city-soundscape-frontend-ftocrmabj-neethuss-projects.vercel.app",
+    "http://localhost:5173"
+  ],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"]
+  methods: 'GET, POST, PUT, PATCH, DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
+    
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
