@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 //middleware to handle cors
 app.use(cors({
   origin: 
-    "https://citysoundscape-frontend.onrender.com",
+    'https://city-soundscape-frontend.vercel.app',
   credentials: true,
   methods: 'GET, POST, PUT, PATCH, DELETE',
   allowedHeaders: ['Content-Type', 'Authorization']
