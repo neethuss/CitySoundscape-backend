@@ -15,9 +15,13 @@ const port = process.env.PORT || 3000
 
 //middleware to handle cors
 app.use(cors({
-  origin:["https://city-soundscape-frontend.vercel.app/","http://localhost:5173"],
-  methods: ["GET", "POST", "PUT", "PATCH","DELETE"],
-  credentials: true
+  origin: ["https://city-soundscape-frontend.vercel.app",
+    "https://city-soundscape-frontend-git-main-neethuss-projects.vercel.app",
+    "https://city-soundscape-frontend-330ff408w-neethuss-projects.vercel.app", "http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+
 }));
 
 app.use(express.json());
@@ -36,6 +40,6 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 
-app.listen(port, ()=>{
+app.listen(port, () => {
   console.log(`Backend server conneted at port ${port}`)
 })
