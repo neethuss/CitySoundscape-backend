@@ -17,12 +17,7 @@ const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 //middleware to handle cors
 app.use((0, cors_1.default)({
-    origin: [
-        "https://city-soundscape-frontend.vercel.app",
-        "https://city-soundscape-frontend-git-main-neethuss-projects.vercel.app",
-        "https://city-soundscape-frontend-ftocrmabj-neethuss-projects.vercel.app",
-        "http://localhost:5173"
-    ],
+    origin: "https://city-soundscape-frontend.vercel.app",
     credentials: true,
     methods: 'GET, POST, PUT, PATCH, DELETE',
     allowedHeaders: ['Content-Type', 'Authorization']
