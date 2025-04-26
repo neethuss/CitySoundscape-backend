@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editMixById = exports.getMixById = exports.getAllSavedMix = exports.postSoundScape = void 0;
+exports.deleteMixById = exports.editMixById = exports.getMixById = exports.getAllSavedMix = exports.postSoundScape = void 0;
 const userModel_1 = __importDefault(require("../Models/userModel"));
 const soundScapeModel_1 = __importDefault(require("../Models/soundScapeModel"));
 //handing adding new mix 
@@ -87,3 +87,19 @@ const editMixById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.editMixById = editMixById;
+//handing delete a mix by id
+const deleteMixById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const deleteMix = yield soundScapeModel_1.default.findByIdAndDelete(id);
+        if (!deleteMix) {
+            return res.status(404).send({ message: 'Mix not found' });
+        }
+        return res.status(200).send(deleteMix);
+    }
+    catch (error) {
+        console.error('❌ Error in deleteMixById:', error);
+        return res.status(500).send({ message: 'Internal server error' });
+    }
+});
+exports.deleteMixById = deleteMixById;

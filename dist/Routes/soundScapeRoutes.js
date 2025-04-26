@@ -11,4 +11,5 @@ router.post('/', authenticationMiddleware_1.default, SoundScapeController.postSo
 router.get('/', authenticationMiddleware_1.default, SoundScapeController.getAllSavedMix);
 router.get('/:id', authenticationMiddleware_1.default, SoundScapeController.getMixById);
 router.patch('/:id', authenticationMiddleware_1.default, SoundScapeController.editMixById);
+router.delete('/:id', authenticationMiddleware_1.default, SoundScapeController.deleteMixById);
 exports.default = router;

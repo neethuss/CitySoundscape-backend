@@ -56,7 +56,6 @@ const postLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         //generate access token for authentication purpose
         const accessToken = yield (0, jwtUtils_1.generateAccessToken)({ username: existingUser.username });
-        console.log(accessToken, 'token');
         //set token in secure http-only cookie
         res.cookie("userRefreshToken", accessToken, {
             httpOnly: true,

@@ -9,5 +9,6 @@ router.post('/',authenticationMiddleware as RequestHandler,SoundScapeController.
 router.get('/', authenticationMiddleware as RequestHandler, SoundScapeController.getAllSavedMix)
 router.get('/:id', authenticationMiddleware as RequestHandler, SoundScapeController.getMixById)
 router.patch('/:id', authenticationMiddleware as RequestHandler, SoundScapeController.editMixById)
+router.delete('/:id', authenticationMiddleware as RequestHandler, SoundScapeController.deleteMixById)
 
 export default router

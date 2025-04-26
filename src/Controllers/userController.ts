@@ -49,8 +49,6 @@ export const postLogin = async (req: Request, res: Response) => {
 
     //generate access token for authentication purpose
     const accessToken = await generateAccessToken({ username: existingUser.username });
-    console.log(accessToken,'token')
-
     //set token in secure http-only cookie
     res.cookie("userRefreshToken", accessToken, {
       httpOnly: true,

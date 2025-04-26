@@ -88,3 +88,23 @@ export const editMixById = async (req: CustomRequest, res: Response) => {
     return res.status(500).send({ message: 'Internal server error' });
   }
 };
+
+//handing delete a mix by id
+export const deleteMixById = async (req: CustomRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const deleteMix = await SoundScape.findByIdAndDelete(id)
+
+    if (!deleteMix) {
+      return res.status(404).send({ message: 'Mix not found' });
+    }
+
+    return res.status(200).send(deleteMix);
+
+  } catch (error) {
+    console.error('❌ Error in deleteMixById:', error);
+    return res.status(500).send({ message: 'Internal server error' });
+  }
+};
+
